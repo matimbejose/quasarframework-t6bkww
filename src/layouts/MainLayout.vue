@@ -39,6 +39,7 @@
 <script>
 import { defineComponent, ref } from 'vue';
 import EssentialLink from 'components/EssentialLink.vue';
+import { date } from 'quasar'
 
 const linksList = [
   {
@@ -86,6 +87,7 @@ const linksList = [
 ];
 
 export default defineComponent({
+  
   name: 'MainLayout',
 
   components: {
@@ -103,6 +105,12 @@ export default defineComponent({
       },
     };
   },
+  computed: {
+    todaysDate() {
+      let timeStamp = Date.now()
+      return date.formatDate(timeStamp, 'dddd D MMMM')
+    }
+  }
 });
 </script>
 
@@ -110,5 +118,7 @@ export default defineComponent({
 .header-imge {
   header: 100%;
   z-index: -1;
+  opacity: 0.2;
+  filter: grayscale(100%);
 }
 </style>
